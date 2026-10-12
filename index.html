@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daniel & Dulce</title>
+  <meta name="description" content="Nuestro pequeño universo" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💖</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/estilos.css" />
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js" } }
+  </script>
+</head>
+<body class="bloqueado">
+  <!-- Fondo 3D: estrellas, constelación y corazones -->
+  <canvas id="fondo3d" aria-hidden="true"></canvas>
+
+  <!-- ================= CONTRASEÑA ================= -->
+  <div id="candado" class="pantalla">
+    <form class="tarjeta candado-caja" id="formCandado" autocomplete="off">
+      <div class="candado-icono">🔒</div>
+      <h1 class="script">Solo para nosotros</h1>
+      <p class="suave" id="pista"></p>
+      <input id="clave" type="password" inputmode="numeric" placeholder="Contraseña" aria-label="Contraseña" />
+      <button class="boton" type="submit">Entrar 💫</button>
+      <p class="error" id="errorClave" aria-live="polite"></p>
+    </form>
+  </div>
+
+  <!-- ================= SORPRESA DE CUMPLEAÑOS ================= -->
+  <div id="cumple" class="pantalla oculto">
+    <canvas id="fuegos" aria-hidden="true"></canvas>
+    <div class="cumple-etapa" id="etapaIntro">
+      <div id="introTexto" class="intro-texto"></div>
+      <button class="boton oculto" id="btnSorpresa">✨ Ver mi sorpresa</button>
+    </div>
+    <div class="cumple-etapa oculto" id="etapaPastel">
+      <h2 class="script grande">Pide un deseo…</h2>
+      <p class="suave">y sopla las velas (tócalas, o sopla al micrófono 🎤)</p>
+      <div class="pastel" id="pastel">
+        <div class="velas" id="velas"></div>
+        <div class="piso piso3"></div>
+        <div class="piso piso2"></div>
+        <div class="piso piso1"></div>
+        <div class="plato"></div>
+      </div>
+      <button class="boton boton-sec" id="btnMicro">🎤 Soplar de verdad</button>
+    </div>
+    <div class="cumple-etapa oculto" id="etapaFinal">
+      <h2 class="script gigante" id="cumpleTitulo"></h2>
+      <p class="cumple-mensaje" id="cumpleMensaje"></p>
+      <button class="boton" id="btnEntrar">Entrar a nuestro universo 💕</button>
+    </div>
+  </div>
+
+  <!-- ================= SITIO ================= -->
+  <div id="sitio" class="oculto">
+    <div id="bannerCumple" class="banner oculto">🎂 Hoy es el cumpleaños de Dulce 🎂</div>
+
+    <nav class="menu" aria-label="Secciones">
+      <a href="#inicio">Inicio</a>
+      <a href="#contador">Contador</a>
+      <a href="#historia">Historia</a>
+      <a href="#galeria">Galería</a>
+      <a href="#razones">Razones</a>
+      <a href="#cartas">Cartas</a>
+      <a href="#cancion">Canción</a>
+      <a href="#lugares">Lugares</a>
+      <a href="#suenos">Sueños</a>
+      <a href="#fechas">Fechas</a>
+    </nav>
+
+    <header id="inicio" class="portada">
+      <div class="portada-texto">
+        <h1 class="script titulo-portada"><span id="nomEl"></span> <span class="amp">&</span> <span id="nomElla"></span></h1>
+        <p class="nombres-completos" id="nombresCompletos"></p>
+        <p class="desde" id="desde"></p>
+        <a href="#contador" class="bajar" aria-label="Bajar">⌄</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="contador" class="seccion">
+        <h2 class="titulo-seccion">Nos conocemos desde hace</h2>
+        <div class="contador" id="reloj"></div>
+        <p class="dato-curioso" id="datoCurioso"></p>
+      </section>
+
+      <section id="historia" class="seccion">
+        <h2 class="titulo-seccion">Nuestra historia</h2>
+        <ol class="linea" id="lineaTiempo"></ol>
+      </section>
+
+      <section id="galeria" class="seccion">
+        <h2 class="titulo-seccion">Nuestros momentos</h2>
+        <div class="polaroids" id="polaroids"></div>
+      </section>
+
+      <section id="razones" class="seccion">
+        <h2 class="titulo-seccion">Razones por las que te quiero</h2>
+        <p class="suave centro">Toca cada tarjeta 💌</p>
+        <div class="razones" id="listaRazones"></div>
+      </section>
+
+      <section id="cartas" class="seccion">
+        <h2 class="titulo-seccion">Cartas para ti</h2>
+        <div class="sobres" id="sobres"></div>
+      </section>
+
+      <section id="cancion" class="seccion">
+        <h2 class="titulo-seccion">Nuestra canción</h2>
+        <div class="tarjeta reproductor" id="reproductor"></div>
+      </section>
+
+      <section id="lugares" class="seccion">
+        <h2 class="titulo-seccion">Nuestro mundo</h2>
+        <div class="lugares">
+          <div class="globo" id="globo"></div>
+          <ul class="lista-lugares" id="listaLugares"></ul>
+        </div>
+      </section>
+
+      <section id="suenos" class="seccion">
+        <h2 class="titulo-seccion">Sueños juntos</h2>
+        <ul class="tarjeta suenos" id="listaSuenos"></ul>
+      </section>
+
+      <section id="fechas" class="seccion">
+        <h2 class="titulo-seccion">Lo que viene</h2>
+        <div class="fechas" id="listaFechas"></div>
+      </section>
+    </main>
+
+    <footer class="pie">
+      <p>Hecho con <button class="corazon-pie" id="corazonPie" aria-label="Corazón">♥</button> por Daniel para Dulce</p>
+      <p class="suave pequeno">Psst… escribe “teamo” 🤫</p>
+    </footer>
+  </div>
+
+  <!-- Visor de fotos -->
+  <div id="visor" class="visor oculto" role="dialog" aria-modal="true">
+    <button class="cerrar" aria-label="Cerrar">✕</button>
+    <figure><img id="visorImg" alt="" /><figcaption id="visorTexto"></figcaption></figure>
+  </div>
+
+  <!-- Carta abierta -->
+  <div id="cartaAbierta" class="visor oculto" role="dialog" aria-modal="true">
+    <article class="papel">
+      <button class="cerrar" aria-label="Cerrar">✕</button>
+      <h3 class="script" id="cartaTitulo"></h3>
+      <div id="cartaTexto"></div>
+    </article>
+  </div>
+
+  <audio id="audio" loop preload="none"></audio>
+  <button id="btnMusica" class="btn-musica oculto" aria-label="Música">♪</button>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
