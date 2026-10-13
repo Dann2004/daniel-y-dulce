@@ -34,6 +34,11 @@ export const DATOS = {
         pista: "Una app de videos 📱",
       },
       {
+        frase: "En Pachuquilla te perdoné (entre comillas) por andar viendo los ojos de un ___ 😒",
+        respuestas: ["mesero", "mesero guapo"],
+        pista: "Trabaja en un restaurante y no soy yo 🍽️",
+      },
+      {
         frase: "Nos vimos por primera vez en el ___ de Pachuca",
         respuestas: ["reloj", "reloj monumental"],
         pista: "Hace tic tac 🕰️",
@@ -44,9 +49,9 @@ export const DATOS = {
         pista: "Es suavecito 🧸",
       },
       {
-        frase: "En Real del Monte me puse triste porque creí que no querías tomar mi ___",
-        respuestas: ["mano", "manita"],
-        pista: "Tiene cinco dedos ✋",
+        frase: "En Tecolutla me quedé con ganas de más tacos de ___",
+        respuestas: ["cueritos", "cuerito"],
+        pista: "Y de un pulque también 🌮",
       },
       {
         frase: "Nuestro viaje a la playa fue a ___, Veracruz",
@@ -128,7 +133,7 @@ export const DATOS = {
       fecha: "Tecolutla, Veracruz",
       titulo: "Nuestro viaje a la playa",
       texto:
-        "Fue una locura, y no me arrepiento ni tantito. Gracias por llevarme. Fueron días hermosos, sobre todo porque los pasé a tu lado.",
+        "Fue una locura, y no me arrepiento ni tantito. Gracias por llevarme. Mi momento favorito: esa tarde en la playa, jugando y platicando. Hacía un calor horrible, pero créeme que eso pasó a segundo plano; yo estaba muy a gusto contigo. Eso sí, me quedé con la espinita de comer más tacos de cueritos y tomarme un pulque… aunque a ninguno de los dos nos gustan 😂",
       icono: "🏖️",
     },
     {
@@ -146,6 +151,20 @@ export const DATOS = {
       icono: "🥴",
     },
     {
+      fecha: "15 de septiembre de 2026",
+      titulo: "El Grito en Plaza Juárez",
+      texto:
+        "Fue muy especial. Me encantaba que me estuvieras abrazando, y cuando se te salieron unas lagrimitas, me confirmaste que de verdad me quieres. Nunca se me va a olvidar.",
+      icono: "🇲🇽",
+    },
+    {
+      fecha: "Esa misma noche",
+      titulo: "Vueltas por Pachuquilla",
+      texto:
+        "Después nos fuimos a Pachuquilla a dar vueltas. Y aunque andabas viendo los ojos de un mesero… te perdono (entre comillas 😒😂). Fue una noche muy bonita, solo porque fue contigo.",
+      icono: "🌃",
+    },
+    {
       fecha: "29 de septiembre de 2026",
       titulo: "El día que te volviste mi novia",
       texto:
@@ -153,10 +172,24 @@ export const DATOS = {
       icono: "💍",
     },
     {
+      fecha: "Un día que no olvido",
+      titulo: "Tus rosas y tu carta",
+      texto:
+        "Me dio penita que me vieras llegar con las rosas, y yo ni sabía dónde estabas. Y la carta… también me dio pena. Hacía mucho tiempo (por no decir nunca) que no hacía algo así, pero contigo no sé qué me pasa: simplemente me nace ser así. Ojalá te hayan gustado mucho.",
+      icono: "🌹",
+    },
+    {
+      fecha: "Cuando me regresé a casa",
+      titulo: "La despedida",
+      texto:
+        "No soy bueno para las despedidas. Me dio muchísima tristeza irme, y me aguanté las ganas de romperme ahí mismo, en el cuarto y en el camino, porque no quería que me vieras así.",
+      icono: "🚌",
+    },
+    {
       fecha: "Ahora",
       titulo: "Aunque haya distancia",
       texto:
-        "La distancia me ha hecho darme cuenta de cuánto te quiero y cuánto te extraño. Nunca olvides que te amo demasiado, mi niña bonita, y que quiero seguir viviendo locuras contigo.",
+        "Me duele estar lejos de ti, pero eso solo me da más ganas de tenerte y de desearte todavía más (en todos los sentidos 😏). Nunca olvides que te amo demasiado, mi niña bonita, y que quiero seguir viviendo locuras contigo.",
       icono: "🌙",
     },
     {
@@ -180,6 +213,9 @@ export const DATOS = {
 
   // ---------- RAZONES POR LAS QUE TE QUIERO ----------
   razones: [
+    "La forma en que me tratas.",
+    "Tus abrazos (como los de aquel 15 de septiembre).",
+    "Que me haces querer hacer cosas que nunca había hecho, como escribir cartas y llevarte rosas.",
     "Que puedo pasar horas platicando contigo y nunca me aburro.",
     "Que cuando estaba solo en Pachuca, tú me hiciste sentir en casa.",
     "Que hasta nuestros desastres (meseros, caídas…) se vuelven recuerdos bonitos.",
@@ -212,6 +248,12 @@ export const DATOS = {
       titulo: "Aunque no esté ahí",
       texto:
         "Mi niña bonita:\n\nSi estás leyendo esto es porque me extrañas… y te cuento un secreto: yo seguramente también te estoy extrañando, muchísimo.\n\nLa distancia es difícil, pero no cambia lo que siento. Mira el cielo un ratito: estamos bajo las mismas estrellas, y pronto vamos a estar juntos otra vez haciendo alguna de nuestras locuras.\n\nTe amo demasiado. Nunca lo olvides.\nDaniel",
+    },
+    {
+      sobre: "Ábrela si estamos enojados 🫶",
+      titulo: "Siempre voy a querer arreglarlo",
+      texto:
+        "Mi mugrosa:\n\nSi estás leyendo esto, seguramente nos enojamos por algo. Quiero que sepas una cosa: por más enojado que esté, siempre voy a querer arreglar las cosas contigo, porque me da miedo perderte.\n\nOjalá que nada ni nadie rompa lo que tenemos. Lo nuestro vale mucho más que cualquier pelea.\n\nYa, ven, dame un abrazo.\nTe amo demasiado,\nDaniel",
     },
     {
       sobre: "Ábrela si tienes un mal día ☁️",
@@ -251,6 +293,7 @@ export const DATOS = {
     "Que conozcas a mi familia",
     "Que conozcas el lugar donde vivo",
     "Ir juntos a las playas de Oaxaca",
+    "Volver a Tecolutla por los tacos de cueritos y el pulque que nos faltaron (aunque no nos gusten 😂)",
     "Ver un amanecer juntos",
     "Hacer un picnic bajo las estrellas",
     "Cocinar algo juntos desde cero",
