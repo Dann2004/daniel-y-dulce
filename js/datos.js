@@ -58,14 +58,14 @@ export const DATOS = {
       icono: "🕰️",
     },
     {
-      fecha: "Agosto 2026",
+      fecha: "19 de agosto de 2026",
       titulo: "Nuestra primera cita",
       texto:
         "Fuimos a un bar. Yo casi no tomo, pero me pareció buena idea… y lo fue, aunque no por las bebidas: pasamos horas platicando. Ahí descubrí algo que sigue siendo verdad: contigo nunca me aburro.",
       icono: "🍹",
     },
     {
-      fecha: "Agosto 2026",
+      fecha: "22 de agosto de 2026",
       titulo: "Real del Monte",
       texto:
         "Una salida bonita de verdad. Confieso que por un momento se me bajaron los ánimos porque pensé que no querías tomar mi mano. Yo era de fuera y estaba solo en Pachuca, y tú me ayudaste a conocer lugares nuevos y a sentirme menos solo. No sabes cuánto te lo agradezco.",
@@ -86,25 +86,32 @@ export const DATOS = {
       icono: "😂",
     },
     {
-      fecha: "Septiembre 2026",
+      fecha: "Tecolutla, Veracruz",
       titulo: "Nuestro viaje a la playa",
       texto:
         "Fue una locura, y no me arrepiento ni tantito. Gracias por llevarme. Fueron días hermosos, sobre todo porque los pasé a tu lado.",
       icono: "🏖️",
     },
     {
-      fecha: "Mi cumpleaños",
+      fecha: "5 de septiembre de 2026",
       titulo: "Gracias por tomarme en cuenta",
       texto:
         "Me dejaste pasar mi cumpleaños contigo, y eso significó muchísimo para mí.",
       icono: "🎁",
     },
     {
-      fecha: "El cumple de la señora",
+      fecha: "6 de septiembre de 2026",
       titulo: "La noche que mejor ni recordamos",
       texto:
         "Me da vergüenza que me hayas visto un poquito pasadito de copas (y lo que vino después, mejor ni lo cuento 🙈). Pero qué noche tan divertida, sobre todo por la pelea de la gente al final.",
       icono: "🥴",
+    },
+    {
+      fecha: "29 de septiembre de 2026",
+      titulo: "El día que te volviste mi novia",
+      texto:
+        "Te lo pedí por chat (muy a nuestro estilo, como empezó todo) y me dijiste que sí. Desde ese día tengo el honor de decir que eres mi novia.",
+      icono: "💍",
     },
     {
       fecha: "Ahora",
@@ -192,19 +199,26 @@ export const DATOS = {
   lugares: [
     { nombre: "Reloj de Pachuca", texto: "Donde te vi por primera vez, el 17 de agosto", lat: 20.1270, lng: -98.7327, tipo: "recuerdo" },
     { nombre: "Real del Monte", texto: "Nuestra salida bonita (y la mano que creí que no querías tomar)", lat: 20.1395, lng: -98.6729, tipo: "recuerdo" },
+    { nombre: "Tecolutla, Veracruz", texto: "Nuestro viaje a la playa: una locura de la que no me arrepiento", lat: 20.4794, lng: -97.0097, tipo: "recuerdo" },
+    { nombre: "Algún día: Oaxaca", texto: "Llevarte a mi estado, que conozcas a mi familia y el lugar donde crecí", lat: 17.0732, lng: -96.7266, tipo: "sueno" },
+    { nombre: "Algún día: las playas de Oaxaca", texto: "Enseñarte mis playas favoritas", lat: 15.8615, lng: -97.0671, tipo: "sueno" },
     { nombre: "Algún día: París", texto: "Ver la torre Eiffel iluminada juntos", lat: 48.8566, lng: 2.3522, tipo: "sueno" },
     { nombre: "Algún día: Japón", texto: "Ver los cerezos en flor", lat: 35.6762, lng: 139.6503, tipo: "sueno" },
   ],
 
   // ---------- SUEÑOS JUNTOS ----------
   suenos: [
+    "Llevarte a Oaxaca y enseñarte mis lugares favoritos",
+    "Que conozcas a mi familia",
+    "Que conozcas el lugar donde vivo",
+    "Ir juntos a las playas de Oaxaca",
     "Ver un amanecer juntos",
     "Hacer un picnic bajo las estrellas",
-    "Viajar juntos a la playa",
     "Cocinar algo juntos desde cero",
     "Ir a un concierto juntos",
     "Aprender a bailar una canción",
     "Tomarnos una foto en cada lugar nuevo",
-    "Celebrar nuestro primer año (17 de agosto de 2027)",
+    "Celebrar un año de conocernos (17 de agosto de 2027)",
+    "Celebrar nuestro primer aniversario de novios (29 de septiembre de 2027)",
   ],
 };
