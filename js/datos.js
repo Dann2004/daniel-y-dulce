@@ -19,14 +19,53 @@ export const DATOS = {
   // Para probarla cualquier otro día abre la web con  ?cumple  al final de la URL
   cumpleElla: { mes: 10, dia: 16 },
 
-  // Contraseña de entrada.
-  // Actual: 17082026  (también acepta 17/08/2026 o 17-08-2026)
-  // Para cambiarla, abre la web, escribe en la consola del navegador
-  //   await hashContrasena("tu-nueva-clave")
-  // y pega aquí el resultado.
-  contrasena: {
-    hash: "ded8d0d1951ef7e48177f6fd2818e8ea1037035872eb3ecb36487b5965398d09",
-    pista: "El día que nos conocimos ✨ (ddmmaaaa)",
+  // ---------- TRIVIA DE ENTRADA (en lugar de contraseña) ----------
+  // Para entrar, ella tiene que completar las frases una por una.
+  // En "frase" pon ___ donde va la palabra que falta.
+  // En "respuestas" pon todas las formas válidas (no importan mayúsculas ni acentos).
+  // "pista" aparece si se equivoca o si toca el botón de pista.
+  trivia: {
+    titulo: "Solo para nosotros",
+    intro: "Antes de entrar, demuéstrame que eres tú: completa nuestras frases 💭",
+    preguntas: [
+      {
+        frase: "Todo empezó porque me metí a los comentarios de un ___",
+        respuestas: ["tiktok", "tik tok"],
+        pista: "Una app de videos 📱",
+      },
+      {
+        frase: "Nos vimos por primera vez en el ___ de Pachuca",
+        respuestas: ["reloj", "reloj monumental"],
+        pista: "Hace tic tac 🕰️",
+      },
+      {
+        frase: "Aquel chico te quería regalar un ___ (y yo insistía en que lo aceptaras 😏)",
+        respuestas: ["peluche", "peluchito", "muñeco"],
+        pista: "Es suavecito 🧸",
+      },
+      {
+        frase: "En Real del Monte me puse triste porque creí que no querías tomar mi ___",
+        respuestas: ["mano", "manita"],
+        pista: "Tiene cinco dedos ✋",
+      },
+      {
+        frase: "Nuestro viaje a la playa fue a ___, Veracruz",
+        respuestas: ["tecolutla"],
+        pista: "Empieza con T 🏖️",
+      },
+      {
+        frase: "Te volviste mi novia el ___ de septiembre",
+        respuestas: ["29", "veintinueve"],
+        pista: "Un día antes del 30 💍",
+      },
+    ],
+    errores: [
+      "¿Cómo que no te acuerdas, mugrosa? 😤",
+      "Mmm… esa no es 💭",
+      "Casi, casi… inténtalo otra vez 🙈",
+      "Me vas a hacer llorar 🥲",
+    ],
+    final: "¡Sí eres tú, mi niña bonita! 💖",
   },
 
   // ---------- SORPRESA DE CUMPLEAÑOS ----------

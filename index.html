@@ -22,11 +22,18 @@
   <!-- ================= CONTRASEÑA ================= -->
   <div id="candado" class="pantalla">
     <form class="tarjeta candado-caja" id="formCandado" autocomplete="off">
-      <div class="candado-icono">🔒</div>
-      <h1 class="script">Solo para nosotros</h1>
-      <p class="suave" id="pista"></p>
-      <input id="clave" type="password" inputmode="numeric" placeholder="Contraseña" aria-label="Contraseña" />
-      <button class="boton" type="submit">Entrar 💫</button>
+      <div class="candado-icono" id="candadoIcono">🔒</div>
+      <h1 class="script" id="triviaTitulo"></h1>
+      <p class="suave" id="triviaIntro"></p>
+      <div class="trivia-corazones" id="triviaCorazones" aria-hidden="true"></div>
+      <p class="trivia-paso suave" id="triviaPaso"></p>
+      <p class="trivia-frase" id="triviaFrase" aria-live="polite"></p>
+      <input id="clave" type="text" placeholder="Escribe la palabra que falta" aria-label="Palabra que falta" autocapitalize="off" spellcheck="false" />
+      <div class="trivia-botones">
+        <button class="boton" type="submit" id="btnTrivia">Siguiente 💫</button>
+        <button class="boton boton-sec" type="button" id="btnPista">Pista 💡</button>
+      </div>
+      <p class="trivia-pista oculto" id="triviaPista"></p>
       <p class="error" id="errorClave" aria-live="polite"></p>
     </form>
   </div>

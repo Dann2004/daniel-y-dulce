@@ -10,12 +10,10 @@ Web hecha con HTML, CSS, JavaScript y Three.js (desde CDN). No necesita instalar
 - **Canción**: copia el `.mp3` a `musica/` y escribe `archivo: "musica/tu-cancion.mp3"`, o pega el enlace de inserción de Spotify en `spotify`.
 - **Lugares**: en Google Maps, clic derecho sobre el lugar y copia las coordenadas (lat, lng).
 
-## 🔒 Contraseña
+## 🔒 Trivia de entrada
 
-La contraseña actual es **17082026** (también acepta 17/08/2026). Para cambiarla:
-1. Abre la web y luego la consola del navegador (F12 → Consola).
-2. Escribe `await hashContrasena("nueva-clave")` y presiona Enter.
-3. Pega el texto que aparece en `contrasena.hash` dentro de `datos.js`.
+En lugar de contraseña, para entrar Dulce tiene que **completar frases de su historia** una por una. Cada acierto enciende un corazón; si se equivoca dos veces le aparece una pista.
+Las frases, respuestas y pistas se editan en `trivia` dentro de `js/datos.js` (pon `___` donde va la palabra que falta). No importan mayúsculas ni acentos.
 
 > Es una puerta bonita, no seguridad real: no subas nada muy privado.
 

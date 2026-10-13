@@ -104,6 +104,34 @@ button { font: inherit; color: inherit; cursor: pointer; }
   outline: none;
 }
 .candado-caja input:focus { border-color: var(--rosa); box-shadow: 0 0 0 3px rgba(255, 143, 177, 0.25); }
+.candado-caja { width: min(420px, 100%); }
+.candado-caja input { letter-spacing: 0.03em; }
+.trivia-corazones { display: flex; gap: 0.4rem; font-size: 1.5rem; color: var(--suave); }
+.trivia-corazon { transition: transform 0.4s, color 0.4s; }
+.trivia-corazon.lleno { color: var(--rosa); transform: scale(1.25); text-shadow: 0 0 12px rgba(255, 143, 177, 0.7); }
+.trivia-paso { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.candado-caja .trivia-frase {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  line-height: 1.45;
+  min-height: 4.2em;
+  display: grid;
+  place-items: center;
+}
+.trivia-frase.aparecer { animation: aparecerFrase 0.6s ease; }
+.trivia-hueco {
+  display: inline-block;
+  min-width: 5.5em;
+  margin: 0 0.25em;
+  border-bottom: 2px dashed var(--rosa);
+  color: var(--rosa-claro);
+  font-style: italic;
+}
+.trivia-hueco.lleno { border-bottom-style: solid; animation: latido 0.6s; }
+.trivia-final { font-family: var(--script); font-size: 2.2rem; color: var(--rosa-claro); }
+.trivia-botones { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+.trivia-pista { color: var(--oro); font-size: 0.95rem; }
+@keyframes aparecerFrase { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 .error { color: var(--rosa); min-height: 1.4em; font-size: 0.9rem; }
 .temblar { animation: temblar 0.45s; }
 

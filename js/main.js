@@ -27,37 +27,88 @@ try {
 
 const hoyEsCumple = esCumple(DATOS.cumpleElla);
 
-// ================= CONTRASEÑA =================
-async function sha256(texto) {
-  if (!window.crypto?.subtle) throw new Error("La contraseña solo funciona con https (en Vercel) o en localhost");
-  const bytes = new TextEncoder().encode(texto);
-  const hash = await crypto.subtle.digest("SHA-256", bytes);
-  return [...new Uint8Array(hash)].map((b) => b.toString(16).padStart(2, "0")).join("");
-}
-const normalizar = (t) => t.trim().toLowerCase().replace(/[\s/.\-]/g, "");
-window.hashContrasena = (t) => sha256(normalizar(t)); // para cambiar la contraseña desde la consola
+// ================= TRIVIA DE ENTRADA =================
+const T = DATOS.trivia;
+const normalizar = (t) =>
+  String(t).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9ñ]/g, "");
+let paso = 0;
+let fallos = 0;
 
-$("pista").textContent = DATOS.contrasena.pista;
-$("formCandado").addEventListener("submit", async (e) => {
+$("triviaTitulo").textContent = T.titulo;
+$("triviaIntro").textContent = T.intro;
+T.preguntas.forEach(() => $("triviaCorazones").append(crear("span", "trivia-corazon", "♡")));
+
+function pintarFrase(relleno) {
+  const [antes, despues = ""] = T.preguntas[paso].frase.split("___");
+  const hueco = relleno
+    ? `<span class="trivia-hueco lleno">${escapar(relleno)}</span>`
+    : `<span class="trivia-hueco">&nbsp;</span>`;
+  $("triviaFrase").innerHTML = `<span>${escapar(antes)}${hueco}${escapar(despues)}</span>`;
+}
+
+function mostrarPregunta() {
+  fallos = 0;
+  $("triviaPaso").textContent = `Frase ${paso + 1} de ${T.preguntas.length}`;
+  pintarFrase();
+  $("triviaFrase").classList.remove("aparecer");
+  void $("triviaFrase").offsetWidth;
+  $("triviaFrase").classList.add("aparecer");
+  $("triviaPista").classList.add("oculto");
+  $("errorClave").textContent = "";
+  $("clave").value = "";
+  $("clave").disabled = false;
+  $("btnTrivia").disabled = false;
+  setTimeout(() => $("clave").focus(), 50);
+}
+
+function verPista() {
+  $("triviaPista").textContent = "💡 " + T.preguntas[paso].pista;
+  $("triviaPista").classList.remove("oculto");
+}
+$("btnPista").addEventListener("click", verPista);
+
+$("formCandado").addEventListener("submit", (e) => {
   e.preventDefault();
-  const caja = $("formCandado");
-  let hash;
-  try {
-    hash = await sha256(normalizar($("clave").value));
-  } catch (err) {
-    $("errorClave").textContent = err.message;
-    return;
-  }
-  if (hash === DATOS.contrasena.hash) {
-    guardar.escribirSesion("abierto", "1");
-    abrir();
+  if ($("clave").disabled) return;
+  const q = T.preguntas[paso];
+  const escrito = normalizar($("clave").value);
+  if (!escrito) return;
+  const bien = q.respuestas.some((r) => {
+    const n = normalizar(r);
+    return escrito === n || (n.length > 2 && escrito.includes(n));
+  });
+  if (bien) {
+    $("clave").disabled = true;
+    $("btnTrivia").disabled = true;
+    $("errorClave").textContent = "";
+    pintarFrase(q.respuestas[0]);
+    const corazon = $("triviaCorazones").children[paso];
+    corazon.textContent = "♥";
+    corazon.classList.add("lleno");
+    fondo?.lluviaDeCorazones(6);
+    paso++;
+    setTimeout(paso < T.preguntas.length ? mostrarPregunta : terminarTrivia, 1100);
   } else {
-    $("errorClave").textContent = "Mmm… esa no es 💭";
+    fallos++;
+    $("errorClave").textContent = T.errores[(fallos - 1) % T.errores.length];
+    if (fallos >= 2) verPista();
+    const caja = $("formCandado");
     caja.classList.remove("temblar");
     void caja.offsetWidth;
     caja.classList.add("temblar");
   }
 });
+
+function terminarTrivia() {
+  $("candadoIcono").textContent = "🔓";
+  $("triviaPaso").textContent = "";
+  $("triviaIntro").textContent = "";
+  $("triviaFrase").innerHTML = `<span class="trivia-final">${escapar(T.final)}</span>`;
+  ["clave", "btnTrivia", "btnPista", "triviaPista", "errorClave"].forEach((id) => $(id).classList.add("oculto"));
+  fondo?.lluviaDeCorazones(50);
+  guardar.escribirSesion("abierto", "1");
+  setTimeout(abrir, 2200);
+}
 
 function abrir() {
   $("candado").classList.add("desvanecer");
@@ -334,5 +385,5 @@ if (guardar.leerSesion("abierto") && !hoyEsCumple) {
   $("candado").classList.add("oculto");
   mostrarSitio();
 } else {
-  setTimeout(() => $("clave").focus(), 300);
+  mostrarPregunta();
 }
