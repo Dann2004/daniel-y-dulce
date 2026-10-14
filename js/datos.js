@@ -17,7 +17,7 @@ export const DATOS = {
 
   // Cumpleaños de Dulce: ese día la web muestra la sorpresa 🎂
   // Para probarla cualquier otro día abre la web con  ?cumple  al final de la URL
-  cumpleElla: { mes: 10, dia: 16 },
+  cumpleElla: { mes: 10, dia: 15 },
 
   // ---------- TRIVIA DE ENTRADA (en lugar de contraseña) ----------
   // Para entrar, ella tiene que completar las frases una por una.
@@ -77,12 +77,12 @@ export const DATOS = {
   cumple: {
     intro: [
       "Hoy es un día muy especial…",
-      "porque un 16 de octubre llegó al mundo",
+      "porque un 15 de octubre llegó al mundo",
       "la persona que hace brillar mis días.",
     ],
     titulo: "¡Feliz cumpleaños, Dulce Paola!",
     mensaje:
-      "Es el primer cumpleaños tuyo que me toca vivir a tu lado, y quería regalarte algo que se quedara para siempre: este pequeño rincón del internet que es solo nuestro. Gracias por existir, por tu sonrisa y por dejarme ser parte de tu historia. Te amo demasiado, mi niña bonita. — Daniel",
+      "Es el primer cumpleaños tuyo que me toca vivir a tu lado, y no lo iba a vivir lejos: hice el viaje para estar aquí contigo, porque viajaría las veces que hicieran falta solo por verte sonreír. Y además quería regalarte algo que se quedara para siempre: este pequeño rincón del internet que es solo nuestro. Gracias por existir, por tu sonrisa y por dejarme ser parte de tu historia. Te amo demasiado, mi niña bonita. — Daniel",
   },
 
   // ---------- NUESTRA HISTORIA (línea de tiempo) ----------
@@ -193,9 +193,16 @@ export const DATOS = {
       icono: "🌙",
     },
     {
-      fecha: "16 de octubre de 2026",
+      fecha: "14 de octubre de 2026",
+      titulo: "Volví por ti",
+      texto:
+        "Cuando me fui de Pachuca me costó muchísimo despedirme, y desde entonces conté los días para volver a verte. El 14 me subí al camión con el corazón acelerado, sabiendo que al día siguiente, justo en tu cumpleaños, por fin te iba a tener enfrente. Hay cosas que no se celebran a la distancia, y tu cumpleaños es una de ellas. Viajaría las veces que hicieran falta solo por verte sonreír. Gracias por hacer que valga la pena cada kilómetro. Te amo demasiado, mi mugrosa.",
+      icono: "🚌",
+    },
+    {
+      fecha: "15 de octubre de 2026",
       titulo: "Tu cumpleaños",
-      texto: "El primero que celebro contigo, y el primero de muchos.",
+      texto: "El primero que celebro contigo, y en persona, abrazándote. El primero de muchos.",
       icono: "🎂",
     },
   ],

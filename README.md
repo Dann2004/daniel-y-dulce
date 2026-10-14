@@ -19,7 +19,7 @@ Las frases, respuestas y pistas se editan en `trivia` dentro de `js/datos.js` (p
 
 ## 🎂 Sorpresa de cumpleaños
 
-El **16 de octubre** la web muestra la sorpresa automáticamente: mensaje, pastel con velas para soplar y fuegos artificiales.
+El **15 de octubre** la web muestra la sorpresa automáticamente: mensaje, pastel con velas para soplar y fuegos artificiales.
 Para probarla otro día, agrega `?cumple` al final de la URL, por ejemplo `https://tu-web.vercel.app/?cumple`.
 
 ## 👀 Verla en tu computadora
