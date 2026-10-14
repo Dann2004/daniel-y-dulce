@@ -230,15 +230,17 @@ document.addEventListener("keydown", (e) => {
 // ================= CANCIÓN =================
 const C = DATOS.cancion;
 const audio = $("audio");
+if (C.encabezado) $("cancionEncabezado").textContent = C.encabezado;
+$("cancionDedicatoria").textContent = C.dedicatoria || "";
 if (C.spotify) {
-  $("reproductor").innerHTML = `<iframe src="${escapar(C.spotify)}" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Nuestra canción"></iframe>`;
+  $("reproductor").innerHTML = `<iframe src="${escapar(C.spotify)}" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="${escapar(C.encabezado || "Canción")}"></iframe>`;
 } else {
   $("reproductor").innerHTML = `
     <div class="vinilo" aria-hidden="true"></div>
     <div class="cancion-info">
       <h3>${escapar(C.titulo)}</h3>
       <p>${escapar(C.artista)}</p>
-      ${C.archivo ? '<button class="boton" id="btnPlay">▶ Escuchar</button>' : '<p class="pequeno">Agrega el mp3 o el enlace de Spotify en <code>js/datos.js</code> 🎵</p>'}
+      ${C.archivo ? '<button class="boton" id="btnPlay">▶ Escuchar</button>' : ""}
     </div>`;
 }
 if (C.archivo) {

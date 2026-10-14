@@ -274,9 +274,13 @@ export const DATOS = {
   // Opción A: pon un mp3 en la carpeta musica/ y escribe su ruta en "archivo"
   // Opción B: pega el enlace de "Compartir > Insertar" de Spotify en "spotify"
   //           (ej. "https://open.spotify.com/embed/track/XXXXXXXX")
+  // "encabezado" es el título de la sección; "dedicatoria" el texto que aparece arriba de la canción
   cancion: {
-    titulo: "Nuestra canción",
-    artista: "Escríbela en datos.js ✏️",
+    encabezado: "Una canción para ti",
+    dedicatoria:
+      "Esta canción te la dedico a ti, mi niña bonita. Cada vez que la escuches, acuérdate de que alguien en algún lugar está pensando en ti y te ama demasiado. 🎶",
+    titulo: "Pronto sabrás cuál es…",
+    artista: "Te la dedico yo, Daniel",
     archivo: "", // ej. "musica/nuestra-cancion.mp3"
     spotify: "",
   },

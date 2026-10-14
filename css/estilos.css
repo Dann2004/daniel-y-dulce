@@ -595,3 +595,15 @@ button { font: inherit; color: inherit; cursor: pointer; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   html { scroll-behavior: auto; }
 }
+
+.dedicatoria {
+  max-width: 34rem;
+  margin: -0.5rem auto 1.4rem;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--rosa-claro);
+}
+.dedicatoria:empty { display: none; }
