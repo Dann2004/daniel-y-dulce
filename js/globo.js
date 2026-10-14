@@ -101,26 +101,76 @@ export async function iniciarGlobo(contenedor, lugares, alSeleccionar) {
   });
 
   // Rotación: automática, arrastrando o enfocando un lugar
+  // Zoom: rueda del mouse, pellizcar con dos dedos o botones + / −
+  const ZOOM_MIN = 9.5, ZOOM_MAX = 20, ZOOM_INICIAL = 17;
   let rotY = 0.6, rotX = 0.35, objetivo = null, arrastrando = false, ultimo = null, tiempoQuieto = 0;
+  let zoom = ZOOM_INICIAL, zoomObjetivo = ZOOM_INICIAL;
+  const dedos = new Map();
+  let pellizco = null;
   const lienzo = renderer.domElement;
+  const fijarZoom = (z) => (zoomObjetivo = THREE.MathUtils.clamp(z, ZOOM_MIN, ZOOM_MAX));
+  const distanciaDedos = () => {
+    const [a, b] = [...dedos.values()];
+    return Math.hypot(a.x - b.x, a.y - b.y);
+  };
+
   lienzo.addEventListener("pointerdown", (e) => {
+    dedos.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (dedos.size === 2) {
+      arrastrando = false;
+      pellizco = { distancia: distanciaDedos(), zoom: zoomObjetivo };
+      return;
+    }
     arrastrando = true;
     ultimo = { x: e.clientX, y: e.clientY, inicioX: e.clientX, inicioY: e.clientY };
     objetivo = null;
   });
-  window.addEventListener("pointerup", (e) => {
-    if (arrastrando && ultimo && Math.hypot(e.clientX - ultimo.inicioX, e.clientY - ultimo.inicioY) < 6) tocar(e);
-    arrastrando = false;
-  });
-  window.addEventListener("pointercancel", () => (arrastrando = false));
+  const soltar = (e, cancelado) => {
+    if (!cancelado && arrastrando && !pellizco && ultimo && Math.hypot(e.clientX - ultimo.inicioX, e.clientY - ultimo.inicioY) < 6) tocar(e);
+    dedos.delete(e.pointerId);
+    if (dedos.size < 2) pellizco = null;
+    if (dedos.size === 0) arrastrando = false;
+  };
+  window.addEventListener("pointerup", (e) => soltar(e, false));
+  window.addEventListener("pointercancel", (e) => soltar(e, true));
   window.addEventListener("pointermove", (e) => {
+    if (dedos.has(e.pointerId)) dedos.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pellizco && dedos.size === 2) {
+      fijarZoom(pellizco.zoom * (pellizco.distancia / Math.max(distanciaDedos(), 1)));
+      objetivo = null;
+      tiempoQuieto = 0;
+      return;
+    }
     if (!arrastrando) return;
-    rotY += (e.clientX - ultimo.x) * 0.008;
-    rotX = THREE.MathUtils.clamp(rotX + (e.clientY - ultimo.y) * 0.008, -1.2, 1.2);
+    const vel = 0.008 * (zoom / ZOOM_INICIAL);
+    rotY += (e.clientX - ultimo.x) * vel;
+    rotX = THREE.MathUtils.clamp(rotX + (e.clientY - ultimo.y) * vel, -1.2, 1.2);
     ultimo.x = e.clientX;
     ultimo.y = e.clientY;
     tiempoQuieto = 0;
   });
+  lienzo.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    fijarZoom(zoomObjetivo * Math.exp(e.deltaY * 0.0015));
+    tiempoQuieto = 0;
+  }, { passive: false });
+
+  // Botones de zoom
+  const controles = document.createElement("div");
+  controles.className = "globo-zoom";
+  controles.innerHTML = `
+    <button type="button" data-z="acercar" aria-label="Acercar">＋</button>
+    <button type="button" data-z="alejar" aria-label="Alejar">−</button>
+    <button type="button" data-z="reiniciar" aria-label="Ver todo el mundo">🌍</button>`;
+  controles.addEventListener("pointerdown", (e) => e.stopPropagation());
+  controles.addEventListener("click", (e) => {
+    const z = e.target.closest("button")?.dataset.z;
+    if (z === "acercar") fijarZoom(zoomObjetivo * 0.75);
+    if (z === "alejar") fijarZoom(zoomObjetivo / 0.75);
+    if (z === "reiniciar") fijarZoom(ZOOM_INICIAL);
+    tiempoQuieto = 0;
+  });
+  contenedor.appendChild(controles);
 
   const raycaster = new THREE.Raycaster();
   function tocar(e) {
@@ -139,6 +189,7 @@ export async function iniciarGlobo(contenedor, lugares, alSeleccionar) {
     while (y - rotY > Math.PI) y -= Math.PI * 2;
     while (y - rotY < -Math.PI) y += Math.PI * 2;
     objetivo = { x: THREE.MathUtils.degToRad(l.lat), y };
+    fijarZoom(11.5);
     marcadores.forEach((m, j) => m.punto.scale.setScalar(j === i ? 1.8 : 1));
   }
 
@@ -179,11 +230,15 @@ export async function iniciarGlobo(contenedor, lugares, alSeleccionar) {
       if (objetivo) {
         rotX += (objetivo.x - rotX) * 0.06;
         rotY += (objetivo.y - rotY) * 0.06;
-      } else if (!arrastrando && tiempoQuieto > 1) {
-        rotY += dt * 0.15;
+      } else if (!arrastrando && !pellizco && tiempoQuieto > 1 && zoomObjetivo > 15) {
+        rotY += dt * 0.15 * (zoom / ZOOM_INICIAL);
       }
+      zoom += (zoomObjetivo - zoom) * 0.12;
+      camara.position.z = zoom;
       globo.rotation.set(rotX, rotY, 0);
+      const escalaMarcador = Math.pow(zoom / ZOOM_INICIAL, 1.6);
       marcadores.forEach((m, i) => {
+        m.grupo.scale.setScalar(escalaMarcador);
         const s = 1 + ((t * 0.8 + i * 0.3) % 1) * 2.2;
         m.aro.scale.setScalar(s);
         m.aro.material.opacity = 1 - ((t * 0.8 + i * 0.3) % 1);

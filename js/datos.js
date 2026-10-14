@@ -278,11 +278,11 @@ export const DATOS = {
   cancion: {
     encabezado: "Una canción para ti",
     dedicatoria:
-      "Esta canción te la dedico a ti, mi niña bonita. Cada vez que la escuches, acuérdate de que alguien en algún lugar está pensando en ti y te ama demasiado. 🎶",
-    titulo: "Pronto sabrás cuál es…",
-    artista: "Te la dedico yo, Daniel",
-    archivo: "", // ej. "musica/nuestra-cancion.mp3"
-    spotify: "",
+      "Te dedico «Mi razón de ser», porque eso eres tú para mí, mi niña bonita. Cada vez que la escuches, acuérdate de que alguien está pensando en ti y te ama demasiado. 🎶",
+    titulo: "Mi razón de ser",
+    artista: "Banda MS de Sergio Lizárraga",
+    archivo: "", // ej. "musica/mi-razon-de-ser.mp3" (si pones un mp3, se escucha completa sin Spotify)
+    spotify: "https://open.spotify.com/embed/track/4rL3IKaiHX4qlNDUxc872a",
   },
 
   // ---------- LUGARES ESPECIALES ----------
