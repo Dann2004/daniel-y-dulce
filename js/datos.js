@@ -210,12 +210,11 @@ export const DATOS = {
   // ---------- GALERÍA ----------
   // Pon tus fotos en img/galeria/ (mejor en .webp, ~1600px de ancho)
   galeria: [
-    { foto: "img/galeria/ejemplo1.svg", texto: "Nuestra primera foto juntos" },
-    { foto: "img/galeria/ejemplo2.svg", texto: "Ese día tan bonito" },
-    { foto: "img/galeria/ejemplo3.svg", texto: "Tu sonrisa favorita (la mía)" },
-    { foto: "img/galeria/ejemplo4.svg", texto: "Atardecer contigo" },
-    { foto: "img/galeria/ejemplo5.svg", texto: "Aventura juntos" },
-    { foto: "img/galeria/ejemplo6.svg", texto: "Simplemente nosotros" },
+    { foto: "img/galeria/nosotros.webp", texto: "Nosotros, con sombrero y todo 🤠💖" },
+    { foto: "img/galeria/sonrisa.webp", texto: "Esa sonrisa que me cambia el día entero" },
+    { foto: "img/galeria/cabello-rojo.webp", texto: "Tu cabello rojo y esa carita que me encanta" },
+    { foto: "img/galeria/hamster.webp", texto: "Tú y tu hámster: lo más tierno del mundo 🐹" },
+    { foto: "img/galeria/vestido-negro.webp", texto: "Qué guapa eres, mi niña bonita 😍" },
   ],
 
   // ---------- RAZONES POR LAS QUE TE QUIERO ----------
